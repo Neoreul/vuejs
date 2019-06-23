@@ -10,13 +10,15 @@
 <body>
 	<div id="app">
 
+		<h3>TODO</h3>
+
 		<div class="form">
 			<div class="input">
 				<label for="todo-input"></label>
 				<input type="text" name="todo-input" id="todo-input" 
 				   	   v-model="todoMessage"
 				   	   v-on:keyup.enter="addTodo">
-				<p v-if="notifyErr">{{notifyErr}}</p>
+				<p class="notify" v-if="notifyErr">{{notifyErr}}</p>
 			</div>
 			
 			<div class="action">

@@ -13,7 +13,7 @@ Vue.component('todo-item', {
 	template: `
 		<li class="todo-item">
 			<span>{{todo.text}}</span>
-			<Button v-on:click="remove">X</Button>
+			<span class="btn-remove" v-on:click="remove">X</span>
 		</li>
 	`
 });
@@ -62,8 +62,8 @@ var app = new Vue({
 		removeTodo: function(id) {
 			let todoIndex = this.findTodo(id);
 
-			console.log("id: ", id);
-			console.log("index: ", todoIndex);
+			// console.log("id: ", id);
+			// console.log("index: ", todoIndex);
 
 			if(todoIndex > -1) {
 				this.todos.splice(todoIndex, 1);

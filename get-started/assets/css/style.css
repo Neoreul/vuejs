@@ -6,3 +6,18 @@ body {
 	margin: 0;
 	padding: 16px;
 }
+
+button {padding: 5px 15px; background-color: #42b983; color: white; 
+	border-radius: 2px; border: 0; cursor: pointer;}
+
+div.form {}
+div.input {margin-bottom: 12px;}
+div.input input {font-size: 14px; height: 25px; min-width: 220px; padding: 2px 7px; 
+	border-radius: 2px; border: 1px solid #dedede;}
+div.input input:focus {outline: none; border: 2px solid #42b983;}
+div.input .notify {color: red; font-size: 13px; font-style: italic;}
+
+.todos {}
+.todo-item {margin-bottom: 10px;}
+.todo-item .btn-remove {margin-left: 10px; border: 1px solid red; border-radius: 15px; 
+	font-size: 10px; color: red; padding: 1px 3px; cursor: pointer;}
