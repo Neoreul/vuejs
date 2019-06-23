@@ -9,12 +9,13 @@
 </head>
 <body>
 	<div id="app">
-		
+
 		<div class="form">
 			<div class="input">
 				<label for="todo-input"></label>
 				<input type="text" name="todo-input" id="todo-input" 
-				   	   v-model="todoMessage">
+				   	   v-model="todoMessage"
+				   	   v-on:keyup.enter="addTodo">
 				<p v-if="notifyErr">{{notifyErr}}</p>
 			</div>
 			
@@ -25,9 +26,15 @@
 		</div>
 
 		<ul class="todos">
-			<li v-for="todo in todos">
+			<!-- <li v-for="todo in todos">
 				{{todo.text}}
-			</li>
+			</li> -->
+			<todo-item
+				v-for="todo in todos"
+				v-bind:todo="todo"
+				v-bind:key="todo.id"
+				v-on:remove-event="removeTodo">
+			</todo-item>
 		</ul>
 
 	</div>
