@@ -34,7 +34,7 @@ var app = new Vue({
 	methods: {
 
 		getTodos: function() {
-			axios.get("https://jsonplaceholder.typicode.com/todos/1").then(res => {
+			axios.get("http://localhost:3000/todos").then(res => {
 				console.log("res: ", res);
 				if(res.data) {
 					let newTodo = {
