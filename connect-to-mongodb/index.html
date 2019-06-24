@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get Started VueJS</title>
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="./assets/js/axios.min.js"></script>
+</head>
+<body>
+	<div id="app">
+
+		<h3>TODO</h3>
+
+		<div class="form">
+			<div class="input">
+				<label for="todo-input"></label>
+				<input type="text" name="todo-input" id="todo-input" 
+				   	   v-model="todoMessage"
+				   	   v-on:keyup.enter="addTodo">
+				<p class="notify" v-if="notifyErr">{{notifyErr}}</p>
+			</div>
+			
+			<div class="action">
+				<Button v-on:click="addTodo">Add</Button>
+			</div>
+
+		</div>
+
+		<ul class="todos">
+			<!-- <li v-for="todo in todos">
+				{{todo.text}}
+			</li> -->
+			<todo-item
+				v-for="todo in todos"
+				v-bind:todo="todo"
+				v-bind:key="todo.id"
+				v-on:remove-event="removeTodo">
+			</todo-item>
+		</ul>
+
+	</div>
+
+	<script src="./assets/js/script.js"></script>
+</body>
+</html>
