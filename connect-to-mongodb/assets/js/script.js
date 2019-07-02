@@ -24,9 +24,7 @@ var app = new Vue({
 		todoMessage: "",
 		notifyErr: "",
 
-		todos: [
-			{id: 0, title: "Learn Vuejs"}
-		]
+		todos: []
 	},
 	created() {
 		this.getTodos();
@@ -34,15 +32,10 @@ var app = new Vue({
 	methods: {
 
 		getTodos: function() {
-			axios.get("http://localhost:3000/todos").then(res => {
+			axios.get("http://localhost:3000/api/todos").then(res => {
 				console.log("res: ", res);
 				if(res.data) {
-					let newTodo = {
-						id: res.data.id,
-						title: res.data.title
-					};
-
-					this.todos.push(newTodo);
+					this.todos = this.todos.concat(res.data);
 				}
 			});
 		},

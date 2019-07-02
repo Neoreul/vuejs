@@ -18,11 +18,11 @@ exports.connect = function(done){
     });
 };
 
-exports.get    = function(){
+exports.get     = function(){
     return state.db;
 };
 
-exports.close  = function(done){
+exports.close   = function(done){
     if(state.db){
         state.db.close(function(err, result){
             state.db = null;

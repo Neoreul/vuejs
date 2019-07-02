@@ -4,7 +4,7 @@ exports.find = (query) => {
 	let col = db.get().collection("todos");
 
 	return new Promise((resolve, reject) => {
-		col.find(query).then(result => {
+		col.find(query).toArray().then(result => {
 			resolve(result);
 		}).catch(err => {
 			reject(err);
