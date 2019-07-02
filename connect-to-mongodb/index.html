@@ -35,7 +35,7 @@
 			<todo-item
 				v-for="todo in todos"
 				v-bind:todo="todo"
-				v-bind:key="todo.id"
+				v-bind:key="todo._id"
 				v-on:remove-event="removeTodo">
 			</todo-item>
 		</ul>

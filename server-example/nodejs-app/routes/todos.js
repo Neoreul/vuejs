@@ -25,4 +25,12 @@ router.get('/', function(req, res) {
 	todos.find({}).then(docs => res.status(200).send(docs)).catch(err => console.log(err));
 });
 
+router.post('/add', function(req, res) {
+	if(req.body) {
+		todos.create(req.body).then(result => res.status(200).send(result)).catch(err => console.log(err));
+	} else {
+		res.status(400).send("Not input data");
+	}
+});
+
 module.exports = router;

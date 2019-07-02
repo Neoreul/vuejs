@@ -7,7 +7,7 @@ Vue.component('todo-item', {
 	methods: {
 		remove: function() {
 			// console.log("Vao day r");
-			this.$emit("remove-event", this.todo.id);
+			this.$emit("remove-event", this.todo._id);
 		}
 	},
 	template: `
@@ -33,7 +33,7 @@ var app = new Vue({
 
 		getTodos: function() {
 			axios.get("http://localhost:3000/api/todos").then(res => {
-				console.log("res: ", res);
+				console.log("getTodos.res: ", res);
 				if(res.data) {
 					this.todos = this.todos.concat(res.data);
 				}
@@ -44,7 +44,7 @@ var app = new Vue({
 		findTodo: function(id) {
 			let i = 0;
 			for(let item of this.todos) {
-				if(item.id === id) return i;
+				if(item._id === id) return i;
 				i++; 
 			}
 			return -1;
@@ -62,7 +62,17 @@ var app = new Vue({
 					text: this.todoMessage
 				};
 
-				this.todos.push(newTodo);
+				// this.todos.push(newTodo);
+
+				axios.post("htpp://localhost:3000/api/todos/add", newTodo).then(res => {
+					console.log("addTodo.res: ", res.data);
+					if(res.data.ok && res.data.ok === 1) {
+						// this.todos.push();
+					}
+				}).catch(err => {
+					console.log(err);
+				});
+
 				// ok. done
 				this.todoMessage = "";
 

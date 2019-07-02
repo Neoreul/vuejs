@@ -3,7 +3,7 @@ let express      = require('express');
 let path         = require('path');
 let cookieParser = require('cookie-parser');
 let logger       = require('morgan');
-// let cors         = require('cors');
+let cors         = require('cors');
 let db           = require('./db');
 let config       = require('./config');
 
@@ -17,8 +17,8 @@ let app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// app.use(cors());
-// app.options('*', cors());
+app.use(cors());
+app.options('*', cors());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -35,12 +35,6 @@ db.connect(function(err) {
         app.use('/', indexRouter);
 		// app.use('/users', usersRouter);
 		app.use('/api/todos', todosRouter);
-
-		app.use(function(req, res, next) {
-			res.header("Access-Control-Allow-Origin", "*");
-			res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-			next();
-		});
 
 		// catch 404 and forward to error handler
 		app.use(function(req, res, next) {
