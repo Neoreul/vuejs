@@ -1,4 +1,5 @@
 let MongoClient = require('mongodb').MongoClient;
+let config      = require('./config');
 
 let state = {
     db: null
@@ -7,12 +8,11 @@ let state = {
 exports.connect = function(done){
     if(state.db) return done();
 
-    MongoClient.connect("mongodb://localhost:27017/todos", {
-        useNewUrlParser: true,
-        useCreateIndex: true
-    }, function(err, db){
+    MongoClient.connect(config.mongo_uri, {
+        useNewUrlParser: true
+    }, function(err, client){
         if(err) return done(err);
-        
+        const db = client.db(config.dbName);
         state.db = db;
         done();
     });
